@@ -41,7 +41,7 @@ CREATE TABLE dishes
     price       INT                                          NOT NULL,
     description VARCHAR             DEFAULT 'No description' NOT NULL,
     rest_id     INTEGER                                      NOT NULL,
-    CONSTRAINT menu_unique_dish_date_name_idx UNIQUE (rest_id, date, name),
+    CONSTRAINT rest_unique_dish_date_name_idx UNIQUE (rest_id, date, name),
     FOREIGN KEY (rest_id) REFERENCES restaurants (id) ON DELETE CASCADE
 );
 
