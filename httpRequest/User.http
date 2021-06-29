@@ -1,0 +1,90 @@
+# ADMIN
+###
+# get all users
+### curl -s http://localhost:8080/rest/admin/users --user admin@gmail.com:admin
+GET http://localhost:8080/rest/admin/users
+Authorization: Basic admin@gmail.com admin
+
+###
+# get user by id 100001
+### curl -s http://localhost:8080/rest/admin/users/100001 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/admin/users/100001
+Authorization: Basic admin@gmail.com admin
+
+###
+# get user by email admin
+### curl -s http://localhost:8080/rest/admin/users/by?email=admin@gmail.com --user admin@gmail.com:admin
+GET http://localhost:8080/rest/admin/users/by-email?email=admin@gmail.com
+Authorization: Basic admin@gmail.com admin
+
+###
+# create user
+### curl -s -X POST "http://localhost:8080/rest/admin/users" -H "Content-Type: application/json" -d "{\"name\":\"new User\",\"email\":\"test@icloud.com\",\"password\":\"test123\"}" --user admin@gmail.com:admin
+POST http://localhost:8080/rest/admin/users
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "name": "new User",
+  "email": "test@icloud.com",
+  "password": "test123"
+}
+
+###
+# update user by id 100000
+### curl -s -X PUT "http://localhost:8080/rest/admin/users/100000" -H "Content-Type: application/json" -d "{\"name\":\"update User\",\"email\":\"updated@icloud.com\",\"password\":\"updated\"}" --user admin@gmail.com:admin
+PUT http://localhost:8080/rest/admin/users/100000
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "name": "update User",
+  "email": "updated@icloud.com",
+  "password": "updated"
+}
+
+###
+# delete user by id 100000
+### curl -s -X DELETE "http://localhost:8080/rest/admin/users/100000" --user admin@gmail.com:admin
+DELETE http://localhost:8080/rest/admin/users/100000
+Authorization: Basic admin@gmail.com admin
+
+# USER
+###
+# get user profile by id 100000
+### curl -s http://localhost:8080/rest/profile --user user@yandex.ru:password
+GET http://localhost:8080/rest/profile
+Authorization: Basic user@yandex.ru password
+
+###
+# register user
+### curl -s -X POST "http://localhost:8080/rest/profile/register" -H "Content-Type: application/json" -d "{\"name\":\"new User\",\"email\":\"new@gmail.com\",\"password\":\"new123\"}"
+POST http://localhost:8080/rest/profile/register
+Content-Type: application/json
+
+{
+  "name": "new User",
+  "email": "new@gmail.com",
+  "password": "new123"
+}
+
+###
+# update profile
+### curl -s -X PUT "http://localhost:8080/rest/profile" -H "Content-Type: application/json" -d "{\"name\":\"update User\",\"email\":\"update@gmail.com\",\"password\":\"update123\"}" --user user@yandex.ru:password
+PUT http://localhost:8080/rest/profile
+Authorization: Basic user@yandex.ru password
+Content-Type: application/json
+
+{
+  "name": "update User",
+  "email": "update@gmail.com",
+  "password": "update123"
+}
+
+###
+# delete profile
+### curl -s -X DELETE "http://localhost:8080/rest/profile" --user user@yandex.ru:password
+DELETE http://localhost:8080/rest/profile
+Authorization: Basic user@yandex.ru password
+
+

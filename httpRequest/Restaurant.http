@@ -1,0 +1,45 @@
+###
+# get all restaurants
+### curl -s http://localhost:8080/rest/restaurants --user user@yandex.ru:password
+GET http://localhost:8080/rest/restaurants
+Authorization: Basic user@yandex.ru password
+
+###
+# get restaurant by id 100002
+### curl -s http://localhost:8080/rest/restaurants/100002 --user user@yandex.ru:password
+GET http://localhost:8080/rest/restaurants/100002
+Authorization: Basic user@yandex.ru password
+
+###
+# create restaurant
+### curl -s -X POST "http://localhost:8080/rest/restaurants" -H "Content-Type: application/json" -d "{\"name\":\"new restaurant\"}" --user admin@gmail.com:admin
+POST http://localhost:8080/rest/restaurants
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "name": "new restaurant"
+}
+
+###
+# update restaurant by id 100002
+### curl -s -X PUT "http://localhost:8080/rest/restaurants/100002" -H "Content-Type: application/json" -d "{\"name\":\"update restaurant\"}" --user admin@gmail.com:admin
+PUT http://localhost:8080/rest/restaurants/100002
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "name": "update restaurant"
+}
+
+###
+# delete restaurant by id 100002
+### curl -s -X DELETE "http://localhost:8080/rest/restaurants/100002" --user admin@gmail.com:admin
+DELETE http://localhost:8080/rest/restaurants/100002
+Authorization: Basic admin@gmail.com admin
+
+###
+# get restaurant not found
+### curl -s http://localhost:8080/rest/restaurants/100001 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/restaurants/100001
+Authorization: Basic admin@gmail.com admin
