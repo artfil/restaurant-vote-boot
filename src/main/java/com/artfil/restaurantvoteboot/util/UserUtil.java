@@ -3,10 +3,12 @@ package com.artfil.restaurantvoteboot.util;
 import com.artfil.restaurantvoteboot.model.Role;
 import com.artfil.restaurantvoteboot.model.User;
 import com.artfil.restaurantvoteboot.to.UserTo;
+import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 
 import static com.artfil.restaurantvoteboot.config.WebSecurityConfig.PASSWORD_ENCODER;
 
+@UtilityClass
 public class UserUtil {
     public static User createNewFromTo(UserTo userTo) {
         return new User(null, userTo.getName(), userTo.getEmail().toLowerCase(), userTo.getPassword(), Role.USER);

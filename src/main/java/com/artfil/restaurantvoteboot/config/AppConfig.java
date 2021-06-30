@@ -3,6 +3,7 @@ package com.artfil.restaurantvoteboot.config;
 import com.artfil.restaurantvoteboot.util.JsonUtil;
 import com.artfil.restaurantvoteboot.util.converter.DateFormatter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,10 @@ import static springfox.documentation.builders.PathSelectors.ant;
 @Slf4j
 public class AppConfig implements WebMvcConfigurer {
 
+    @Bean
+    Hibernate5Module module() {
+        return new Hibernate5Module();
+    }
 
     @Autowired
     public void storeObjectMapper(ObjectMapper objectMapper) {

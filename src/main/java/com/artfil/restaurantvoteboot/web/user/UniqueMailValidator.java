@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 
+import static com.artfil.restaurantvoteboot.web.GlobalExceptionHandler.EXCEPTION_DUPLICATE_EMAIL;
+
 @Component
 @AllArgsConstructor
 public class UniqueMailValidator implements org.springframework.validation.Validator {
@@ -23,7 +25,7 @@ public class UniqueMailValidator implements org.springframework.validation.Valid
         HasIdAndEmail user = ((HasIdAndEmail) target);
         if (StringUtils.hasText(user.getEmail()) && repository.getByEmail(user.getEmail().toLowerCase())
                 .filter(u -> !u.getId().equals(user.getId())).isPresent()) {
-            errors.rejectValue("email", "", "User with this email already exists");
+            errors.rejectValue("email", EXCEPTION_DUPLICATE_EMAIL);
         }
     }
 }
