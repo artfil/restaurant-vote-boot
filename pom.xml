@@ -115,9 +115,6 @@
                 <!--https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
