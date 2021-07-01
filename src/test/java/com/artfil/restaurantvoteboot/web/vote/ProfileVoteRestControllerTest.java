@@ -116,7 +116,7 @@ class ProfileVoteRestControllerTest extends AbstractControllerTest {
 
     @Test
     @Transactional(propagation = Propagation.NEVER)
-    void createDuplicate() throws Exception {
+    void createDuplicate() {
         assertThrows(Exception.class, () ->
                 perform(MockMvcRequestBuilders.post(REST_URL)
                         .param("restId", Integer.toString(RESTAURANT_1_ID))

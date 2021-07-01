@@ -91,7 +91,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
 
-        RESTAURANT_MATCHER.assertMatch(restaurantRepository.getOne(RESTAURANT_2_ID), updated);
+        RESTAURANT_MATCHER.assertMatch(restaurantRepository.getById(RESTAURANT_2_ID), updated);
     }
 
     @Test
@@ -108,7 +108,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
         int newId = created.id();
         newRest.setId(newId);
         RESTAURANT_MATCHER.assertMatch(created, newRest);
-        RESTAURANT_MATCHER.assertMatch(restaurantRepository.getOne(newId), newRest);
+        RESTAURANT_MATCHER.assertMatch(restaurantRepository.getById(newId), newRest);
     }
 
     @Test
@@ -134,7 +134,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     @Transactional(propagation = Propagation.NEVER)
-    void createDuplicate() throws Exception {
+    void createDuplicate(){
         Restaurant invalid = new Restaurant(null, restaurant1.getName());
         assertThrows(Exception.class, () ->
                 perform(MockMvcRequestBuilders.post(REST_URL)
@@ -147,7 +147,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     @Transactional(propagation = Propagation.NEVER)
-    void updateDuplicate() throws Exception {
+    void updateDuplicate(){
         Restaurant invalid = new Restaurant(RESTAURANT_1_ID, restaurant2.getName());
         assertThrows(Exception.class, () ->
                 perform(MockMvcRequestBuilders.put(REST_URL + RESTAURANT_1_ID)

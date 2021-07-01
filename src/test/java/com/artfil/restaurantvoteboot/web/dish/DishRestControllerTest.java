@@ -143,7 +143,7 @@ class DishRestControllerTest extends AbstractControllerTest {
 
     @Test
     @Transactional(propagation = Propagation.NEVER)
-    void createDuplicate() throws Exception {
+    void createDuplicate() {
         Dish invalid = new Dish(null, dish2.getName(), LocalDate.now(), 100);
         assertThrows(Exception.class, () ->
                 perform(MockMvcRequestBuilders.post(REST_URL, RESTAURANT_1_ID)
@@ -156,7 +156,7 @@ class DishRestControllerTest extends AbstractControllerTest {
 
     @Test
     @Transactional(propagation = Propagation.NEVER)
-    void updateDuplicate() throws Exception {
+    void updateDuplicate() {
         Dish invalid = new Dish(DISH_1_ID, dish2.getName(), LocalDate.now(), 100);
         assertThrows(Exception.class, () ->
                 perform(MockMvcRequestBuilders.put(REST_URL + DISH_1_ID, RESTAURANT_1_ID)
