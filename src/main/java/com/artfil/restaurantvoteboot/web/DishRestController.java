@@ -5,6 +5,9 @@ import com.artfil.restaurantvoteboot.repository.DishRepository;
 import com.artfil.restaurantvoteboot.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,10 +31,12 @@ import static com.artfil.restaurantvoteboot.util.ValidationUtil.checkSingleModif
 @RequestMapping(value = DISH_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 @Slf4j
+@CacheConfig(cacheNames = "dishes")
 public class DishRestController {
     private final DishRepository dishRepository;
     private final RestaurantRepository restaurantRepository;
 
+    @Cacheable
     @GetMapping()
     public List<Dish> getAllToday(@PathVariable int restId) {
         log.info("getAllToday for restaurants {}", restId);
@@ -53,6 +58,7 @@ public class DishRestController {
         return dishRepository.getAllByDate(restId, date);
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -61,6 +67,7 @@ public class DishRestController {
         checkSingleModification(dishRepository.delete(id, restId), "Dish id=" + id + ", Rest id=" + restId + " missed");
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -72,6 +79,7 @@ public class DishRestController {
         dishRepository.save(dish);
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Dish> createWithLocation(@Valid @RequestBody Dish dish, @PathVariable int restId) {

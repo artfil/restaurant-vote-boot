@@ -4,6 +4,8 @@ import com.artfil.restaurantvoteboot.model.Restaurant;
 import com.artfil.restaurantvoteboot.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,6 +28,7 @@ import static com.artfil.restaurantvoteboot.util.ValidationUtil.checkSingleModif
 @RequestMapping(value = RESTAURANT_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 @Slf4j
+@CacheConfig(cacheNames = "dishes")
 public class RestaurantRestController {
     private final RestaurantRepository restaurantRepository;
 
@@ -41,6 +44,7 @@ public class RestaurantRestController {
         return restaurantRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -49,6 +53,7 @@ public class RestaurantRestController {
         checkSingleModification(restaurantRepository.delete(id), "Restaurant id=" + id + " not found");
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -59,6 +64,7 @@ public class RestaurantRestController {
         restaurantRepository.save(restaurant);
     }
 
+    @CacheEvict(allEntries = true)
     @Secured("ROLE_ADMIN")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createWithLocation(@Valid @RequestBody Restaurant restaurant) {
