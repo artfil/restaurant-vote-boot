@@ -44,7 +44,6 @@ public class Dish extends AbstractNamedEntity {
     @Size(min = 2, max = 120)
     private String description = "No description";
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rest_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
