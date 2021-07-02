@@ -25,7 +25,7 @@ import java.time.LocalDate;
 @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Vote extends AbstractBaseEntity {
-    @Column(name = "vote_date", nullable = false, columnDefinition = "default now()")
+    @Column(name = "vote_date", nullable = false)
     @NotNull
     private LocalDate voteDate = LocalDate.now();
 

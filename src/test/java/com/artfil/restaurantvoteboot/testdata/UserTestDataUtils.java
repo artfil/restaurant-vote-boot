@@ -8,13 +8,11 @@ import com.artfil.restaurantvoteboot.util.JsonUtil;
 import java.util.Collections;
 import java.util.Date;
 
-import static com.artfil.restaurantvoteboot.model.AbstractBaseEntity.START_SEQ;
-
 public class UserTestDataUtils {
     public static final TestMatcher<User> USER_MATCHER = TestMatcher.usingIgnoringFieldsComparator(User.class, "registered", "password");
 
-    public static final int USER_ID = START_SEQ;
-    public static final int ADMIN_ID = START_SEQ + 1;
+    public static final int USER_ID = 1;
+    public static final int ADMIN_ID = 2;
     public static final int NOT_FOUND = 103;
 
     public static final User user = new User(USER_ID, "User", "user@yandex.ru", "password", Role.USER);

@@ -5,7 +5,6 @@ import com.artfil.restaurantvoteboot.model.Dish;
 
 import java.time.Month;
 
-import static com.artfil.restaurantvoteboot.model.AbstractBaseEntity.START_SEQ;
 import static com.artfil.restaurantvoteboot.testdata.RestaurantTestDataUtils.restaurant1;
 import static com.artfil.restaurantvoteboot.testdata.RestaurantTestDataUtils.restaurant2;
 import static com.artfil.restaurantvoteboot.testdata.RestaurantTestDataUtils.restaurant3;
@@ -16,13 +15,13 @@ public class DishTestDataUtils {
     public static final TestMatcher<Dish> DISH_MATCHER = TestMatcher.usingIgnoringFieldsComparator(Dish.class, "restaurant");
 
     public static final int NOT_FOUND = 100;
-    public static final int DISH_1_ID = START_SEQ + 5;
-    public static final int DISH_2_ID = START_SEQ + 6;
-    public static final int DISH_3_ID = START_SEQ + 7;
-    public static final int DISH_4_ID = START_SEQ + 8;
-    public static final int DISH_5_ID = START_SEQ + 9;
-    public static final int DISH_6_ID = START_SEQ + 10;
-    public static final int DISH_7_ID = START_SEQ + 11;
+    public static final int DISH_1_ID = 1;
+    public static final int DISH_2_ID = 2;
+    public static final int DISH_3_ID = 3;
+    public static final int DISH_4_ID = 4;
+    public static final int DISH_5_ID = 5;
+    public static final int DISH_6_ID = 6;
+    public static final int DISH_7_ID = 7;
 
     public static final Dish dish1 = new Dish(DISH_1_ID, "Fresh Korea", now(), 500, "Tomatoes, cheese, salad");
     public static final Dish dish2 = new Dish(DISH_2_ID, "Asian soup", now(), 800, "seafood, potatoes");

@@ -28,11 +28,9 @@ import javax.persistence.SequenceGenerator;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public abstract class AbstractBaseEntity implements Persistable<Integer>, HasId {
-    public static final int START_SEQ = 100000;
 
     @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
     // doesn't work for hibernate lazy proxy

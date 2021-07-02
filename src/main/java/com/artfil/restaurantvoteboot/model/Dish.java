@@ -23,14 +23,14 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "dishes", uniqueConstraints = {@UniqueConstraint(columnNames = {"rest_id", "date", "name"}, name = "rest_unique_dish_date_name_idx")})
+@Table(name = "dishes", uniqueConstraints = {@UniqueConstraint(columnNames = {"rest_id", "create_date", "name"}, name = "rest_unique_dish_date_name_idx")})
 @Getter
 @Setter
 @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Dish extends AbstractNamedEntity {
 
-    @Column(name = "date", nullable = false, columnDefinition = "default now()")
+    @Column(name = "create_date", nullable = false)
     @NotNull
     private LocalDate date = LocalDate.now();
 

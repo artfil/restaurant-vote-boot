@@ -1,7 +1,7 @@
 ###
-# get dish today by restaurant id 100002
-### curl -s http://localhost:8080/rest/restaurants/100002/dishes --user user@yandex.ru:password
-GET http://localhost:8080/rest/restaurants/100002/dishes
+# get dish today by restaurant id 1
+### curl -s http://localhost:8080/rest/restaurants/1/dishes --user user@yandex.ru:password
+GET http://localhost:8080/rest/restaurants/1/dishes
 Authorization: Basic user@yandex.ru password
 
 ###
@@ -17,9 +17,9 @@ GET http://localhost:8080/rest/restaurants/100002/dishes/100005
 Authorization: Basic admin@gmail.com admin
 
 ###
-# create dish by restaurant id 100002
-### curl -s -X POST "http://localhost:8080/rest/restaurants/100002/dishes" -H "Content-Type: application/json" -d "{\"name\":\"new dish\",\"price\":1000,\"description\":\"new\", \"restaurant\": { \"id\": 100002 } }" --user admin@gmail.com:admin
-POST http://localhost:8080/rest/restaurants/100002/dishes
+# create dish by restaurant id 1
+### curl -s -X POST "http://localhost:8080/rest/restaurants/1/dishes" -H "Content-Type: application/json" -d "{\"name\":\"new dish\",\"price\":1000,\"description\":\"new\", \"restaurant\": { \"id\": 1 } }" --user admin@gmail.com:admin
+POST http://localhost:8080/rest/restaurants/1/dishes
 Authorization: Basic admin@gmail.com admin
 Content-Type: application/json
 
@@ -28,7 +28,7 @@ Content-Type: application/json
   "price": 1000,
   "description": "new",
   "restaurant": {
-    "id": 100002
+    "id": 1
   }
 }
 
