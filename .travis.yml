@@ -1,6 +1,20 @@
 language: java
 jdk: openjdk16
 
+services:
+  - postgresql
+
+addons:
+  postgresql: "12.7"
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
+env:
+  global:
+    -PGPORT=5432
+    -PGUSER=travis
+
 cache:
   directories:
     - $HOME/.m2
@@ -8,8 +22,3 @@ cache:
 branches:
   only:
     - master
-
-script:
-  - java --version
-  - ./mvnw clean install
-  - ./mvnw test
