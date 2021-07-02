@@ -1,10 +1,9 @@
 language: java
 jdk: openjdk16
 
-cache:
-  directories:
-    - $HOME/.m2
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
-branches:
-  only:
-    - master
+env:
+  global:
+    - CODECOV_TOKEN=:44c25400-84a5-4060-b4d7-d933a120b08e
