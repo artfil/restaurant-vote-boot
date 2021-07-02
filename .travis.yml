@@ -1,24 +1,9 @@
 language: java
 jdk: openjdk16
 
-services:
-  - postgresql
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
-addons:
-  postgresql: "12.7"
-  apt:
-    packages:
-      - postgresql-12
-      - postgresql-client-12
 env:
   global:
-    -PGPORT=5432
-    -PGUSER=travis
-
-cache:
-  directories:
-    - $HOME/.m2
-
-branches:
-  only:
-    - master
+    - CODECOV_TOKEN=:44c25400-84a5-4060-b4d7-d933a120b08e
