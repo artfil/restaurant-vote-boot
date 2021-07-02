@@ -4,7 +4,6 @@ import com.artfil.restaurantvoteboot.model.Vote;
 import com.artfil.restaurantvoteboot.repository.VoteRepository;
 import com.artfil.restaurantvoteboot.util.VoteUtil;
 import com.artfil.restaurantvoteboot.web.AbstractControllerTest;
-import com.artfil.restaurantvoteboot.web.GlobalExceptionHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,17 +19,16 @@ import static com.artfil.restaurantvoteboot.testdata.RestaurantTestDataUtils.RES
 import static com.artfil.restaurantvoteboot.testdata.RestaurantTestDataUtils.RESTAURANT_3_ID;
 import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.ADMIN_ID;
 import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.USER_ID;
+import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.admin;
+import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.user;
 import static com.artfil.restaurantvoteboot.testdata.VoteTestDataUtils.*;
+import static com.artfil.restaurantvoteboot.util.UrlUtil.VOTE_URL;
 import static java.time.LocalTime.now;
 import static java.time.LocalTime.of;
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.user;
-import static com.artfil.restaurantvoteboot.testdata.UserTestDataUtils.admin;
-import static com.artfil.restaurantvoteboot.util.UrlUtil.VOTE_URL;
 
 class ProfileVoteRestControllerTest extends AbstractControllerTest {
     private static final String REST_URL = VOTE_URL + '/';
@@ -68,8 +66,7 @@ class ProfileVoteRestControllerTest extends AbstractControllerTest {
             perform(MockMvcRequestBuilders.put(REST_URL + VOTE_1_ID)
                     .param("restId", Integer.toString(RESTAURANT_3_ID))
                     .with(userHttpBasic(admin)))
-                    .andExpect(status().isUnprocessableEntity())
-                    .andExpect(content().string(containsString(GlobalExceptionHandler.EXCEPTION_UPDATE_VOTE)));
+                    .andExpect(status().isUnprocessableEntity());
         } else {
             perform(MockMvcRequestBuilders.put(REST_URL + VOTE_1_ID)
                     .param("restId", Integer.toString(RESTAURANT_3_ID))
