@@ -12,7 +12,6 @@
     <artifactId>restaurantVote-boot</artifactId>
     <version>1.0</version>
     <name>restaurantVote-boot</name>
-    <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -117,7 +116,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <testFailureIgnore> true </testFailureIgnore>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
