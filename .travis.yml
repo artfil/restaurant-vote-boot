@@ -8,3 +8,8 @@ cache:
 branches:
   only:
     - master
+
+script:
+  - java --version
+  - ./mvnw clean install
+  - ./mvnw test
