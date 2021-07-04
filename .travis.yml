@@ -8,3 +8,11 @@ cache:
 branches:
   only:
     - master
+
+services:
+  - postgresql
+
+# https://docs.travis-ci.com/user/database-setup/#PostgreSQL
+before_script:
+  - psql -c 'create database restaurantVote' -U postgres
+  - psql -c 'create user "user"; grant all privileges on database restaurantVote to "user"' -U postgres
