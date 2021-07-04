@@ -1,9 +1,3 @@
-DROP TABLE IF EXISTS votes;
-DROP TABLE IF EXISTS user_roles;
-DROP TABLE IF EXISTS dishes;
-DROP TABLE IF EXISTS restaurants;
-DROP TABLE IF EXISTS users;
-
 CREATE TABLE users
 (
     id         SERIAL PRIMARY KEY,

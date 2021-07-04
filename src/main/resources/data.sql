@@ -1,13 +1,3 @@
-DELETE
-FROM votes;
-DELETE
-FROM dishes;
-DELETE
-FROM restaurants;
-DELETE
-FROM user_roles;
-DELETE
-FROM users;
 INSERT INTO users (name, email, password)
 VALUES ('User', 'user@yandex.ru', '{noop}password'),
        ('Admin', 'admin@gmail.com', '{noop}admin');
