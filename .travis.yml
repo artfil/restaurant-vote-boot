@@ -10,9 +10,22 @@ branches:
     - master
 
 services:
-  - postgresql
+  - docker
+#  - postgresql
 
 # https://docs.travis-ci.com/user/database-setup/#PostgreSQL
-before_script:
-  - psql -c 'create database restaurantVote' -U postgres
-  - psql -c 'create user "user"; grant all privileges on database restaurantVote to "user"' -U postgres
+#before_script:
+#  - psql -c 'create database restaurantVote' -U postgres
+#  - psql -c 'create user "user"; grant all privileges on database restaurantVote to "user"' -U postgres
+env:
+  - DOCKER_COMPOSE_VERSION=1.29.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+script:
+   - docker-compose build
+   - docker-compose run test

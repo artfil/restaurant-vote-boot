@@ -6,9 +6,9 @@ GET http://localhost:8080/rest/admin/users
 Authorization: Basic admin@gmail.com admin
 
 ###
-# get user by id 100001
-### curl -s http://localhost:8080/rest/admin/users/100001 --user admin@gmail.com:admin
-GET http://localhost:8080/rest/admin/users/100001
+# get user by id 2
+### curl -s http://localhost:8080/rest/admin/users/2 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/admin/users/2
 Authorization: Basic admin@gmail.com admin
 
 ###
@@ -31,9 +31,9 @@ Content-Type: application/json
 }
 
 ###
-# update user by id 100000
-### curl -s -X PUT "http://localhost:8080/rest/admin/users/100000" -H "Content-Type: application/json" -d "{\"name\":\"update User\",\"email\":\"updated@icloud.com\",\"password\":\"updated\"}" --user admin@gmail.com:admin
-PUT http://localhost:8080/rest/admin/users/100000
+# update user by id 1
+### curl -s -X PUT "http://localhost:8080/rest/admin/users/1" -H "Content-Type: application/json" -d "{\"name\":\"update User\",\"email\":\"updated@icloud.com\",\"password\":\"updated\"}" --user admin@gmail.com:admin
+PUT http://localhost:8080/rest/admin/users/1
 Authorization: Basic admin@gmail.com admin
 Content-Type: application/json
 
@@ -44,14 +44,14 @@ Content-Type: application/json
 }
 
 ###
-# delete user by id 100000
-### curl -s -X DELETE "http://localhost:8080/rest/admin/users/100000" --user admin@gmail.com:admin
-DELETE http://localhost:8080/rest/admin/users/100000
+# delete user by id 1
+### curl -s -X DELETE "http://localhost:8080/rest/admin/users/1" --user admin@gmail.com:admin
+DELETE http://localhost:8080/rest/admin/users/1
 Authorization: Basic admin@gmail.com admin
 
 # USER
 ###
-# get user profile by id 100000
+# get user profile by id 1
 ### curl -s http://localhost:8080/rest/profile --user user@yandex.ru:password
 GET http://localhost:8080/rest/profile
 Authorization: Basic user@yandex.ru password

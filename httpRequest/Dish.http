@@ -5,15 +5,15 @@ GET http://localhost:8080/rest/restaurants/1/dishes
 Authorization: Basic user@yandex.ru password
 
 ###
-# get dish by date 2021-03-08 by restaurant id 100002
-### curl -s http://localhost:8080/rest/restaurants/100002/dishes/by-date?date=2021-03-08 --user admin@gmail.com:admin
-GET http://localhost:8080/rest/restaurants/100002/dishes/by-date?date=2021-03-08
+# get dishes by date 2021-03-08 by restaurant id 1
+### curl -s http://localhost:8080/rest/restaurants/1/dishes/by-date?date=2021-03-08 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/restaurants/1/dishes/by-date?date=2021-03-08
 Authorization: Basic admin@gmail.com admin
 
 ###
-# get dish by id 100005 by restaurant id 100002
-### curl -s http://localhost:8080/rest/restaurants/100002/dishes/100005 --user admin@gmail.com:admin
-GET http://localhost:8080/rest/restaurants/100002/dishes/100005
+# get dish by id 1 by restaurant id 1
+### curl -s http://localhost:8080/rest/restaurants/1/dishes/1 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/restaurants/1/dishes/1
 Authorization: Basic admin@gmail.com admin
 
 ###
@@ -33,9 +33,9 @@ Content-Type: application/json
 }
 
 ###
-# update dish by id 100005  by restaurant id 100002
-### curl -s -X PUT "http://localhost:8080/rest/restaurants/100002/dishes/100005" -H "Content-Type: application/json" -d "{\"name\":\"update dish\",\"price\":999,\"description\":\"update\", \"restaurant\": { \"id\": 100002 } }" --user admin@gmail.com:admin
-PUT http://localhost:8080/rest/restaurants/100002/dishes/100005
+# update dish by id 1  by restaurant id 1
+### curl -s -X PUT "http://localhost:8080/rest/restaurants/1/dishes/1" -H "Content-Type: application/json" -d "{\"name\":\"update dish\",\"price\":999,\"description\":\"update\", \"restaurant\": { \"id\": 100002 } }" --user admin@gmail.com:admin
+PUT http://localhost:8080/rest/restaurants/1/dishes/1
 Authorization: Basic admin@gmail.com admin
 Content-Type: application/json
 
@@ -49,15 +49,15 @@ Content-Type: application/json
 }
 
 ###
-# delete dish by id 100005 by restaurant id 100002
-### curl -s -X DELETE "http://localhost:8080/rest/restaurants/100002/dishes/100005" --user admin@gmail.com:admin
-DELETE http://localhost:8080/rest/restaurants/100002/dishes/100005
+# delete dish by id 1 by restaurant id 1
+### curl -s -X DELETE "http://localhost:8080/rest/restaurants/1/dishes/1" --user admin@gmail.com:admin
+DELETE http://localhost:8080/rest/restaurants/1/dishes/1
 Authorization: Basic admin@gmail.com admin
 
 ###
 # get dish not found
-### curl -s http://localhost:8080/rest/restaurants/100002/dishes/100001 --user admin@gmail.com:admin
-GET http://localhost:8080/rest/restaurants/100002/dishes/100001
+### curl -s http://localhost:8080/rest/restaurants/1/dishes/100001 --user admin@gmail.com:admin
+GET http://localhost:8080/rest/restaurants/1/dishes/100001
 Authorization: Basic admin@gmail.com admin
 
 

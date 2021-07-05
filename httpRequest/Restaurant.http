@@ -5,9 +5,9 @@ GET http://localhost:8080/rest/restaurants
 Authorization: Basic user@yandex.ru password
 
 ###
-# get restaurant by id 100002
-### curl -s http://localhost:8080/rest/restaurants/100002 --user user@yandex.ru:password
-GET http://localhost:8080/rest/restaurants/100002
+# get restaurant by id 1
+### curl -s http://localhost:8080/rest/restaurants/1 --user user@yandex.ru:password
+GET http://localhost:8080/rest/restaurants/1
 Authorization: Basic user@yandex.ru password
 
 ###
@@ -22,9 +22,9 @@ Content-Type: application/json
 }
 
 ###
-# update restaurant by id 100002
-### curl -s -X PUT "http://localhost:8080/rest/restaurants/100002" -H "Content-Type: application/json" -d "{\"name\":\"update restaurant\"}" --user admin@gmail.com:admin
-PUT http://localhost:8080/rest/restaurants/100002
+# update restaurant by id 1
+### curl -s -X PUT "http://localhost:8080/rest/restaurants/1" -H "Content-Type: application/json" -d "{\"name\":\"update restaurant\"}" --user admin@gmail.com:admin
+PUT http://localhost:8080/rest/restaurants/1
 Authorization: Basic admin@gmail.com admin
 Content-Type: application/json
 
@@ -33,9 +33,9 @@ Content-Type: application/json
 }
 
 ###
-# delete restaurant by id 100002
-### curl -s -X DELETE "http://localhost:8080/rest/restaurants/100002" --user admin@gmail.com:admin
-DELETE http://localhost:8080/rest/restaurants/100002
+# delete restaurant by id 1
+### curl -s -X DELETE "http://localhost:8080/rest/restaurants/1" --user admin@gmail.com:admin
+DELETE http://localhost:8080/rest/restaurants/1
 Authorization: Basic admin@gmail.com admin
 
 ###

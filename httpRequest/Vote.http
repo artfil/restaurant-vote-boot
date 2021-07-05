@@ -1,8 +1,8 @@
 # USER
 ###
-# create vote by restaurant id 100004
-### curl -s -X POST "http://localhost:8080/rest/profile/vote?restId=100004" --user user@yandex.ru:password
-POST http://localhost:8080/rest/profile/vote?restId=100004
+# create vote by restaurant id 3
+### curl -s -X POST "http://localhost:8080/rest/profile/vote?restId=3" --user user@yandex.ru:password
+POST http://localhost:8080/rest/profile/vote?restId=3
 Authorization: Basic user@yandex.ru password
 
 #ADMIN
@@ -13,8 +13,8 @@ GET http://localhost:8080/rest/profile/vote/
 Authorization: Basic admin@gmail.com admin
 
 ###
-# update vote by restaurant id 100004 by vote id 100012 if local time is before 11am
-### curl -s -X PUT "http://localhost:8080/rest/profile/vote/100012?restId=100004" --user admin@gmail.com:admin
+# update vote by restaurant id 3 by vote id 1 if local time is before 11am
+### curl -s -X PUT "http://localhost:8080/rest/profile/vote/1?restId=3" --user admin@gmail.com:admin
 PUT http://localhost:8080/rest/profile/vote/100012?restId=100004
 Authorization: Basic admin@gmail.com admin
 
